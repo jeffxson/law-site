@@ -12,7 +12,7 @@ import {
 } from "@chakra-ui/react";
 import { HamburgerIcon } from "@chakra-ui/icons";
 import { HashLink as Link } from "react-router-hash-link";
-import logo from "../component/logo.jpeg";
+import logo from "../component/logo.png";
 const NavBar = () => {
   //"#b4816b"
   return (
@@ -25,7 +25,7 @@ const NavBar = () => {
       <Box pl={6} pr={6} pt={5} pb={7}>
         <Flex>
           <Link to="/">
-            <Image src={logo} />
+            <Image h="80px" w="100px" src={logo} />
           </Link>
 
           <Spacer />

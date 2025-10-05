@@ -11,6 +11,11 @@ import {
   List,
   ListIcon,
   ListItem,
+  Accordion,
+  AccordionItem,
+  AccordionButton,
+  AccordionPanel,
+  AccordionIcon,
   Text,
   Textarea,
 } from "@chakra-ui/react";
@@ -34,6 +39,7 @@ import Scroll6 from "./component/Scroll/scroll6";
 import Scroll4 from "./component/Scroll/Scroll4";
 import { useState, useEffect } from "react";
 import { BsArrowUpCircleFill } from "react-icons/bs";
+
 function App() {
   const [scrolled, setScrolled] = useState(false);
 
@@ -92,6 +98,9 @@ function App() {
           <Book />
         </div>
         <div id="contact">
+          <TermsPolicy />
+        </div>
+        <div>
           <Contact />
         </div>
       </div>
@@ -120,11 +129,11 @@ export const Home = () => {
         >
           <b>
             <Scroll6>
-              MORGAN & ASSOCIATES is a highly reputable law firm that
-              specializes in highly complex immigration cases, Bankruptcy,
-              Criminal Law, Divorce and Family and more. They have attorneys in
-              three New York City locations, and their attorneys are licensed to
-              practice immigration law in all 50 U.S. states.{" "}
+              WILLIAM DUDLEY is a highly reputable law firm that specializes in
+              highly complex immigration cases, Bankruptcy, Criminal Law,
+              Divorce and Family and more. They have attorneys in three New York
+              City locations, and their attorneys are licensed to practice
+              immigration law in all 50 U.S. states.{" "}
             </Scroll6>
           </b>
         </Box>
@@ -225,6 +234,63 @@ export const Profile = () => {
     const yOffset = -140;
     window.scrollTo({ top: yCoordinate + yOffset, behavior: "smooth" });
   };
+
+  const lawyers = [
+    {
+      name: "Craig F. Arcella",
+      role: "Partner",
+      practice: "Tax",
+      email: "carcella@cravath.com",
+      education:
+        "J.D., 1998, Columbia Law School (Harlan Fiske Stone Scholar); B.A., 1995, Duke University",
+      img: "https://randomuser.me/api/portraits/men/8.jpg",
+    },
+    {
+      name: "Sophia Martinez",
+      role: "Senior Associate",
+      practice: "Corporate Law",
+      email: "smartinez@lawfirm.com",
+      education:
+        "J.D., 2010, Harvard Law School; B.A., 2006, University of California, Berkeley",
+      img: "https://randomuser.me/api/portraits/women/12.jpg",
+    },
+    {
+      name: "Michael Chen",
+      role: "Partner",
+      practice: "Intellectual Property",
+      email: "mchen@lawfirm.com",
+      education:
+        "J.D., 2005, Yale Law School; B.S., 2001, MIT (Computer Science)",
+      img: "https://randomuser.me/api/portraits/men/32.jpg",
+    },
+    {
+      name: "Emily Johnson",
+      role: "Associate",
+      practice: "Litigation",
+      email: "ejohnson@lawfirm.com",
+      education:
+        "J.D., 2016, NYU School of Law; B.A., 2012, Princeton University",
+      img: "https://randomuser.me/api/portraits/women/28.jpg",
+    },
+    {
+      name: "David O’Connor",
+      role: "Partner",
+      practice: "Mergers & Acquisitions",
+      email: "doconnor@lawfirm.com",
+      education:
+        "J.D., 2002, University of Chicago Law School; B.A., 1998, Georgetown University",
+      img: "https://randomuser.me/api/portraits/men/41.jpg",
+    },
+    {
+      name: "Aisha Patel",
+      role: "Associate",
+      practice: "International Arbitration",
+      email: "apatel@lawfirm.com",
+      education:
+        "J.D., 2018, Stanford Law School; B.A., 2014, London School of Economics",
+      img: "https://randomuser.me/api/portraits/women/45.jpg",
+    },
+  ];
   return (
     <>
       <Box bg="#eceff2" p="60px">
@@ -232,174 +298,31 @@ export const Profile = () => {
           Onboard lawyers Profile
         </Heading>
         <Box display="flex" justifyContent="space-between" flexWrap="wrap">
-          <Box
-            maxW="md"
-            mb="50px"
-            border="1px solid transparent"
-            bg="white"
-            p="20px"
-            borderRadius="8px"
-          >
-            <Flex spacing="4" mb="40px">
-              <Flex flex="1" gap="4" alignItems="center" flexWrap="wrap">
-                <Avatar
-                  name="Craig F. Arcella"
-                  src="https://randomuser.me/api/portraits/men/8.jpg"
-                />
-
-                <Box>
-                  <Heading size="sm">Craig F. Arcella, Partner</Heading>
-                  <Text>Tax</Text>
-                  <Text>carcella@cravath.com</Text>
-                </Box>
+          {lawyers.map((lawyer, index) => (
+            <Box
+              key={index}
+              maxW="md"
+              mb="50px"
+              border="1px solid transparent"
+              bg="white"
+              p="20px"
+              borderRadius="8px"
+            >
+              <Flex spacing="4" mb="40px">
+                <Flex flex="1" gap="4" alignItems="center" flexWrap="wrap">
+                  <Avatar name={lawyer.name} src={lawyer.img} />
+                  <Box>
+                    <Heading size="sm">
+                      {lawyer.name}, {lawyer.role}
+                    </Heading>
+                    <Text>{lawyer.practice}</Text>
+                    <Text>{lawyer.email}</Text>
+                  </Box>
+                </Flex>
               </Flex>
-            </Flex>
-
-            <Text>
-              EDUCATION J.D., 1998, Columbia Law School Harlan Fiske Stone
-              Scholar B.A., 1995, Duke University
-            </Text>
-          </Box>
-          <Box
-            maxW="md"
-            mb="50px"
-            border="1px solid transparent"
-            bg="white"
-            p="20px"
-            borderRadius="8px"
-          >
-            <Flex spacing="4" mb="40px">
-              <Flex flex="1" gap="4" alignItems="center" flexWrap="wrap">
-                <Avatar
-                  name="Craig F. Arcella"
-                  src="https://randomuser.me/api/portraits/men/8.jpg"
-                />
-
-                <Box>
-                  <Heading size="sm">Craig F. Arcella, Partner</Heading>
-                  <Text>Tax</Text>
-                  <Text>carcella@cravath.com</Text>
-                </Box>
-              </Flex>
-            </Flex>
-
-            <Text>
-              EDUCATION J.D., 1998, Columbia Law School Harlan Fiske Stone
-              Scholar B.A., 1995, Duke University
-            </Text>
-          </Box>
-          <Box
-            maxW="md"
-            mb="50px"
-            border="1px solid transparent"
-            bg="white"
-            p="20px"
-            borderRadius="8px"
-          >
-            <Flex spacing="4" mb="40px">
-              <Flex flex="1" gap="4" alignItems="center" flexWrap="wrap">
-                <Avatar
-                  name="Craig F. Arcella"
-                  src="https://randomuser.me/api/portraits/men/8.jpg"
-                />
-
-                <Box>
-                  <Heading size="sm">Craig F. Arcella, Partner</Heading>
-                  <Text>Tax</Text>
-                  <Text>carcella@cravath.com</Text>
-                </Box>
-              </Flex>
-            </Flex>
-
-            <Text>
-              EDUCATION J.D., 1998, Columbia Law School Harlan Fiske Stone
-              Scholar B.A., 1995, Duke University
-            </Text>
-          </Box>
-          <Box
-            maxW="md"
-            mb="50px"
-            border="1px solid transparent"
-            bg="white"
-            p="20px"
-            borderRadius="8px"
-          >
-            <Flex spacing="4" mb="40px">
-              <Flex flex="1" gap="4" alignItems="center" flexWrap="wrap">
-                <Avatar
-                  name="Craig F. Arcella"
-                  src="https://randomuser.me/api/portraits/men/8.jpg"
-                />
-
-                <Box>
-                  <Heading size="sm">Craig F. Arcella, Partner</Heading>
-                  <Text>Tax</Text>
-                  <Text>carcella@cravath.com</Text>
-                </Box>
-              </Flex>
-            </Flex>
-
-            <Text>
-              EDUCATION J.D., 1998, Columbia Law School Harlan Fiske Stone
-              Scholar B.A., 1995, Duke University
-            </Text>
-          </Box>
-          <Box
-            maxW="md"
-            mb="50px"
-            border="1px solid transparent"
-            bg="white"
-            p="20px"
-            borderRadius="8px"
-          >
-            <Flex spacing="4" mb="40px">
-              <Flex flex="1" gap="4" alignItems="center" flexWrap="wrap">
-                <Avatar
-                  name="Craig F. Arcella"
-                  src="https://randomuser.me/api/portraits/men/8.jpg"
-                />
-
-                <Box>
-                  <Heading size="sm">Craig F. Arcella, Partner</Heading>
-                  <Text>Tax</Text>
-                  <Text>carcella@cravath.com</Text>
-                </Box>
-              </Flex>
-            </Flex>
-
-            <Text>
-              EDUCATION J.D., 1998, Columbia Law School Harlan Fiske Stone
-              Scholar B.A., 1995, Duke University
-            </Text>
-          </Box>
-          <Box
-            maxW="md"
-            mb="50px"
-            border="1px solid transparent"
-            bg="white"
-            p="20px"
-            borderRadius="8px"
-          >
-            <Flex spacing="4" mb="40px">
-              <Flex flex="1" gap="4" alignItems="center" flexWrap="wrap">
-                <Avatar
-                  name="Craig F. Arcella"
-                  src="https://randomuser.me/api/portraits/men/8.jpg"
-                />
-
-                <Box>
-                  <Heading size="sm">Craig F. Arcella, Partner</Heading>
-                  <Text>Tax</Text>
-                  <Text>carcella@cravath.com</Text>
-                </Box>
-              </Flex>
-            </Flex>
-
-            <Text>
-              EDUCATION J.D., 1998, Columbia Law School Harlan Fiske Stone
-              Scholar B.A., 1995, Duke University
-            </Text>
-          </Box>
+              <Text>{lawyer.education}</Text>
+            </Box>
+          ))}
         </Box>
       </Box>
 
@@ -518,7 +441,7 @@ export const Testimonials = () => {
               <ListItem display="flex">
                 <GoQuote size="40px" color="#724e3f" />
                 <p style={{ marginTop: "20px" }}>
-                  We highly recommend MORGAN & ASSOCIATES Firm... they are truly
+                  We highly recommend WILLIAM DUDLEY Firm... they are truly
                   professional and "results' oriented"... Our publishing company
                   is at ease knowing they have our back!
                   <br></br>
@@ -638,6 +561,149 @@ export const Book = () => {
     </Box>
   );
 };
+
+export const TermsPolicy = () => {
+  return (
+    <Box color="#b4816b" p={10}>
+      <Heading mb={6} color="#b4816b" textAlign="center">
+        Terms & Privacy Policy
+      </Heading>
+
+      <Accordion allowMultiple>
+        {/* Terms of Service */}
+        <AccordionItem>
+          <h2>
+            <AccordionButton>
+              <Box flex="1" textAlign="left" fontWeight="600">
+                1. Introduction
+              </Box>
+              <AccordionIcon />
+            </AccordionButton>
+          </h2>
+          <AccordionPanel pb={4}>
+            Welcome to Williams Dudley Law Firm. By using our website and
+            services, you agree to comply with and be bound by these Terms of
+            Service. Please review them carefully before using our platform.
+          </AccordionPanel>
+        </AccordionItem>
+
+        <AccordionItem>
+          <h2>
+            <AccordionButton>
+              <Box flex="1" textAlign="left" fontWeight="600">
+                2. Legal Advice Disclaimer
+              </Box>
+              <AccordionIcon />
+            </AccordionButton>
+          </h2>
+          <AccordionPanel pb={4}>
+            The information on this website is provided for general
+            informational purposes only and should not be considered legal
+            advice. Contact a licensed attorney for advice regarding your
+            specific legal matter.
+          </AccordionPanel>
+        </AccordionItem>
+
+        <AccordionItem>
+          <h2>
+            <AccordionButton>
+              <Box flex="1" textAlign="left" fontWeight="600">
+                3. Confidentiality
+              </Box>
+              <AccordionIcon />
+            </AccordionButton>
+          </h2>
+          <AccordionPanel pb={4}>
+            We take confidentiality seriously. Any communication you send to us
+            will be treated with care, but no attorney-client relationship is
+            established until a formal agreement is signed.
+          </AccordionPanel>
+        </AccordionItem>
+
+        {/* Privacy Policy */}
+        <AccordionItem>
+          <h2>
+            <AccordionButton>
+              <Box flex="1" textAlign="left" fontWeight="600">
+                4. Privacy & Data Protection
+              </Box>
+              <AccordionIcon />
+            </AccordionButton>
+          </h2>
+          <AccordionPanel pb={4}>
+            We respect your privacy. Personal information collected via this
+            website (such as through contact forms or newsletters) will be used
+            only for communication purposes and will not be shared with third
+            parties without your consent.
+          </AccordionPanel>
+        </AccordionItem>
+
+        <AccordionItem>
+          <h2>
+            <AccordionButton>
+              <Box flex="1" textAlign="left" fontWeight="600">
+                5. Cookies & Tracking
+              </Box>
+              <AccordionIcon />
+            </AccordionButton>
+          </h2>
+          <AccordionPanel pb={4}>
+            Our website may use cookies to enhance your browsing experience. You
+            may disable cookies in your browser settings, but some features may
+            not function properly.
+          </AccordionPanel>
+        </AccordionItem>
+
+        <AccordionItem>
+          <h2>
+            <AccordionButton>
+              <Box flex="1" textAlign="left" fontWeight="600">
+                6. Limitation of Liability
+              </Box>
+              <AccordionIcon />
+            </AccordionButton>
+          </h2>
+          <AccordionPanel pb={4}>
+            Williams Dudley Law Firm shall not be held liable for any damages
+            arising from the use of this website or reliance on the information
+            provided herein.
+          </AccordionPanel>
+        </AccordionItem>
+
+        <AccordionItem>
+          <h2>
+            <AccordionButton>
+              <Box flex="1" textAlign="left" fontWeight="600">
+                7. Changes to This Policy
+              </Box>
+              <AccordionIcon />
+            </AccordionButton>
+          </h2>
+          <AccordionPanel pb={4}>
+            We reserve the right to update or modify these Terms & Privacy
+            Policy at any time. Updates will be reflected on this page with a
+            revised date.
+          </AccordionPanel>
+        </AccordionItem>
+
+        <AccordionItem>
+          <h2>
+            <AccordionButton>
+              <Box flex="1" textAlign="left" fontWeight="600">
+                8. Contact Us
+              </Box>
+              <AccordionIcon />
+            </AccordionButton>
+          </h2>
+          <AccordionPanel pb={4}>
+            If you have any questions regarding our Terms or Privacy Policy,
+            please contact us at: hello@williamsdudley.com
+          </AccordionPanel>
+        </AccordionItem>
+      </Accordion>
+    </Box>
+  );
+};
 export const Contact = () => {
   return (
     <>
@@ -654,18 +720,22 @@ export const Contact = () => {
             <Image src={laeimg} alt="Dan Abramov" maxWidth="400px" />
           </Box>
         </Box>
+
         <Box width={["90%", "90%", "40%", "40%"]}>
           <Heading mt="20px" mb="20px">
             Get In Touch
           </Heading>
+
           <Text fontSize="20px" fontWeight="600" color="#b4816b">
             Phone
           </Text>
-          <Text mb="20px"> (123) 456-7890</Text>
+          <Text mb="20px"> (347) 472-5433</Text>
+
           <Text fontSize="20px" fontWeight="600" color="#b4816b">
             Email
           </Text>
-          <Text mb="20px"> hello@morgan&associate.com</Text>
+          <Text mb="20px"> hello@williamsdudley.com</Text>
+
           <Text fontSize="20px" fontWeight="600" color="#b4816b">
             Social
           </Text>
@@ -690,15 +760,43 @@ export const Contact = () => {
             />
           </ButtonGroup>
 
-          <Text fontSize="12px">
-            Milcheur Law is an accessible<br></br>
-            workplace. Persons with<br></br>
+          <Text fontSize="12px" mb="20px">
+            Milcheur Law is an accessible
+            <br />
+            workplace. Persons with
+            <br />
             disabilities are welcome to apply.
           </Text>
+
+          {/* Newsletter Subscribe Section */}
+          <Box mt="30px">
+            <Text fontSize="20px" fontWeight="600" color="#b4816b" mb="10px">
+              Subscribe to Our Newsletter
+            </Text>
+            <Flex>
+              <Input
+                type="email"
+                placeholder="Enter your email"
+                bg="white"
+                color="black"
+                _placeholder={{ color: "gray.500" }}
+                mr={2}
+              />
+              <Button
+                colorScheme="orange"
+                bg="#b4816b"
+                color="white"
+                _hover={{ bg: "#a06f58" }}
+              >
+                Subscribe
+              </Button>
+            </Flex>
+          </Box>
         </Box>
       </Flex>
+
       <Text fontSize="sm" bg="black" color="white" textAlign="center">
-        &copy; {new Date().getFullYear()} MORGAN & ASSOCIATES, Inc. All rights
+        &copy; {new Date().getFullYear()} WILLIAM DUDLEY , Inc. All rights
         reserved.
       </Text>
     </>
